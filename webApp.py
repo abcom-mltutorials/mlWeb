@@ -35,7 +35,7 @@ def allowed_file(filename):
 classes = ['airplane' ,'automobile', 'bird' , 'cat' , 'deer' ,'dog' ,'frog', 'horse' ,'ship' ,'truck']
 
 
-def predict_result(filename , model):
+def predict(filename , model):
 	img = load_img(filename , target_size = (32 , 32))
 	img = img_to_array(img)
 	img = img.reshape(1 , 32 ,32 ,3)
@@ -85,7 +85,7 @@ def success():
 				output.close()
 				img = filename
 
-				class_result , prob_result = predict_result(img_path , model)
+				class_result , prob_result = predict(img_path , model)
 
 				predictions = {
 					  "class1":class_result[0],
@@ -114,7 +114,7 @@ def success():
 				img_path = os.path.join(target_img , file.filename)
 				img = file.filename
 
-				class_result , prob_result = predict_result(img_path , model)
+				class_result , prob_result = predict(img_path , model)
 
 				predictions = {
 					  "class1":class_result[0],
@@ -138,4 +138,5 @@ def success():
 
 if __name__ == "__main__":
 	app.run(debug = True)
+
 
